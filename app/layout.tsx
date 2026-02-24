@@ -16,9 +16,10 @@ const sortsMillGoudy = Sorts_Mill_Goudy({
 });
 
 export const metadata: Metadata = {
-    title: "Ryan Walker Portfolio - PrebuiltUI",
-    description: "Ryan Walker's portfolio built by PrebuiltUI. A free and open-source UI template for React.js, Next.js and Tailwind CSS.",
-};
+    title: "Awol Abdulbaasit | Full-Stack Developer | CEO Ada Tech Solutions",
+    description:
+      "Awol Abdulbaasit is a Full-Stack Web and Mobile App Developer and CEO of Ada Tech Solutions. Expert in Flutter, Node.js, Laravel, and scalable system architecture. View portfolio: https://eng-awol.vercel.app/",
+  };
 
 export default function RootLayout({
     children,
