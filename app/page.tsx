@@ -1,5 +1,5 @@
-import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 import AboutSection from "@/sections/about-section";
 import ContactSection from "@/sections/contact-section";
 import EducationSection from "@/sections/education-section";
@@ -11,9 +11,9 @@ import SkillsSection from "@/sections/skills-section";
 export default function Page() {
     return (
         <>
-            <Navbar />
+                    <Navbar />
 
-            <main className="max-md:px-4 pt-20">
+            <main className="max-md:px-4 pt-4">
                 <section id="hero"><HeroSection /></section>
                 <section id="about"><AboutSection /></section>
                 <section id="projects"><ProjectsSection /></section>
@@ -23,6 +23,9 @@ export default function Page() {
                 <section id="contact"><ContactSection /></section>
                 <Footer />
             </main>
+
+        
         </>
+        
     );
 }

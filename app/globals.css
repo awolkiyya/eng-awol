@@ -17,7 +17,7 @@
     @apply text-gray-800 dark:text-gray-100 transition-colors;
   }
 
-  section {
+  /* section {
     @apply bg-white dark:bg-gray-900 transition-colors;
-  }
+  } */
 }
