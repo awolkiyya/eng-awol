@@ -1,16 +1,16 @@
 import Section from "@/components/section";
 
 export default function AboutSection() {
-    return (
-        <Section title="About">
-            <div className="text-sm/6.5">
-                <p>
-                    I’m Rayan Walker, a full-stack developer passionate about building end-to-end digital experiences that are fast, scalable and user-focused. With strong expertise in both front-end and back-end technologies, I enjoy transforming ideas into fully functional web applications that feel seamless and intuitive.
-                </p>
-                <p className="mt-5">
-                    Whether it’s crafting responsive interfaces or developing robust backend systems, I aim to deliver solutions that are both reliable and impactful.
-                </p>
-            </div>
-        </Section>
-    );
+  return (
+    <Section title="About">
+      <div className="text-sm/6.5 space-y-5">
+        <p>
+          I’m <strong>Awol Abdulbaasit</strong>, a software engineer and Chief Innovation Technology Expert at Adama Investment Group. With years of experience as a full-stack developer and project manager, I specialize in designing and implementing scalable web and mobile solutions that drive real business impact.
+        </p>
+        <p>
+          My passion lies in leveraging modern technologies to transform ideas into efficient, reliable, and user-focused applications. From backend architecture to frontend UX, I aim to deliver solutions that are both robust and seamless.
+        </p>
+      </div>
+    </Section>
+  );
 }
