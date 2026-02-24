@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import AboutSection from "@/sections/about-section";
 import ContactSection from "@/sections/contact-section";
@@ -9,15 +10,19 @@ import SkillsSection from "@/sections/skills-section";
 
 export default function Page() {
     return (
-        <main className="max-md:px-4">
-            <HeroSection />
-            <AboutSection />
-            <ProjectsSection />
-            <ExperienceSection />
-            <EducationSection />
-            <SkillsSection />
-            <ContactSection />
-            <Footer />
-        </main>
+        <>
+            <Navbar />
+
+            <main className="max-md:px-4 pt-20">
+                <section id="hero"><HeroSection /></section>
+                <section id="about"><AboutSection /></section>
+                <section id="projects"><ProjectsSection /></section>
+                <section id="experience"><ExperienceSection /></section>
+                <section id="education"><EducationSection /></section>
+                <section id="skills"><SkillsSection /></section>
+                <section id="contact"><ContactSection /></section>
+                <Footer />
+            </main>
+        </>
     );
 }

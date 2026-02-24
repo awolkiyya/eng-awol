@@ -1,16 +1,23 @@
 @import "tailwindcss";
 
-@theme {
-    --font-sans: "Poppins", sans-serif;
-    --font-mono: "Sorts Mill Goudy", monospace;
-}
-
 @layer base {
-    body {
-        @apply bg-white text-gray-800 antialiased text-sm;
-    }
+  body {
+    @apply bg-white text-gray-800 antialiased transition-colors duration-300;
+  }
 
-    button {
-        @apply cursor-pointer;
-    }
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  header, nav, footer {
+    @apply transition-colors duration-300;
+  }
+
+  a {
+    @apply text-gray-800 dark:text-gray-100 transition-colors;
+  }
+
+  section {
+    @apply bg-white dark:bg-gray-900 transition-colors;
+  }
 }
