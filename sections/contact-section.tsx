@@ -1,20 +1,38 @@
+"use client";
+
 import Section from "@/components/section";
+import { Mail, Phone } from "lucide-react";
 
 export default function ContactSection() {
-    return (
-        <Section title="Contact">
-            <table className="table-auto mr-auto">
-                <tbody>
-                    <tr>
-                        <td className="pr-4 py-2">Email:</td>
-                        <td className="py-2 text-gray-500">contact@prebuiltui.com</td>
-                    </tr>
-                    <tr>
-                        <td className="pr-4 py-2">Phone:</td>
-                        <td className="py-2 text-gray-500">+1 (555) 555-5555</td>
-                    </tr>
-                </tbody>
-            </table>
-        </Section>
-    );
+  const contacts = [
+    {
+      type: "Email",
+      value: "awolabdulbaasit143@gmail.com",
+      icon: <Mail className="w-5 h-5 text-black" />,
+    },
+    {
+      type: "Phone",
+      value: "+251911996750",
+      icon: <Phone className="w-5 h-5 text-black" />,
+    },
+  ];
+
+  return (
+    <Section title="Contact">
+      <div className="flex flex-col md:flex-row gap-6 justify-center mt-6">
+        {contacts.map((contact) => (
+          <div
+            key={contact.type}
+            className="flex items-center gap-4 px-6 py-4 border rounded-xl hover:shadow-lg transition cursor-pointer bg-white"
+          >
+            <div className="p-2 bg-gray-100 rounded-full">{contact.icon}</div>
+            <div>
+              <p className="text-sm text-gray-500">{contact.type}</p>
+              <p className="font-medium text-black">{contact.value}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
 }
