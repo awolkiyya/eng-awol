@@ -11,21 +11,43 @@ import SkillsSection from "@/sections/skills-section";
 export default function Page() {
     return (
         <>
-                    <Navbar />
-
-            <main className="max-md:px-4 pt-4">
-                <section id="hero"><HeroSection /></section>
-                <section id="about"><AboutSection /></section>
-                <section id="projects"><ProjectsSection /></section>
-                <section id="experience"><ExperienceSection /></section>
-                <section id="education"><EducationSection /></section>
-                <section id="skills"><SkillsSection /></section>
-                <section id="contact"><ContactSection /></section>
-                <Footer />
-            </main>
-
-        
-        </>
+        <Navbar />
+     
+        <main className="max-w-6xl mx-auto px-4 pt-6 space-y-24">
+     
+           <section id="hero">
+              <HeroSection />
+           </section>
+     
+           <section id="about">
+              <AboutSection />
+           </section>
+     
+           <section id="projects">
+              <ProjectsSection />
+           </section>
+     
+           <section id="experience">
+              <ExperienceSection />
+           </section>
+     
+           <section id="education">
+              <EducationSection />
+           </section>
+     
+           <section id="skills">
+              <SkillsSection />
+           </section>
+     
+           <section id="contact">
+              <ContactSection />
+           </section>
+     
+        </main>
+     
+        <Footer />
+     </>
+     
         
     );
 }

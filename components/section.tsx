@@ -1,13 +1,25 @@
 interface Props {
     title: string;
     children: React.ReactNode;
-}
-
-export default function Section({ title, children }: Props) {
+  }
+  
+  export default function Section({ title, children }: Props) {
     return (
-        <section className="flex flex-col md:flex-row items-center justify-center md:items-start gap-8 w-full max-w-4xl mx-auto mt-28">
-            <p className="text-xl text-center md:text-left md:text-lg font-medium pt-3 w-full md:max-w-42">{title}</p>
-            {children}
-        </section>
+      <section className="flex flex-col md:flex-row gap-10 w-full max-w-6xl mx-auto mt-28">
+  
+        {/* Title */}
+        <div className="md:w-48 shrink-0">
+          <p className="text-xl md:text-lg font-medium text-center md:text-left">
+            {title}
+          </p>
+        </div>
+  
+        {/* Content */}
+        <div className="flex-1 w-full">
+          {children}
+        </div>
+  
+      </section>
     );
-}
+  }
+  
