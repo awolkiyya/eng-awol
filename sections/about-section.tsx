@@ -1,3 +1,5 @@
+"use client";
+
 import Section from "@/components/section";
 
 export default function AboutSection() {
@@ -5,10 +7,15 @@ export default function AboutSection() {
     <Section title="About">
       <div className="text-sm/6.5 space-y-5">
         <p>
-          I’m <strong>Awol Abdulbaasit</strong>, a software engineer and Chief Innovation Technology Expert at Adama Investment Group. With years of experience as a full-stack developer and project manager, I specialize in designing and implementing scalable web and mobile solutions that drive real business impact.
+          I’m <strong>Awol Abdulbaasit</strong>, a Software Engineer and technology leader with <strong>over 5 years of hands-on experience</strong>. I currently serve as the Chief Innovation Technology Expert at Adama Investment Group, Project Manager at Ghioon, and CEO of Ada Tech.
         </p>
+
         <p>
-          My passion lies in leveraging modern technologies to transform ideas into efficient, reliable, and user-focused applications. From backend architecture to frontend UX, I aim to deliver solutions that are both robust and seamless.
+          I specialize in full-stack development, designing and building scalable web and mobile applications using modern technologies like <strong>Next.js, Laravel, Node.js, Flutter</strong>, and cloud platforms such as <strong>AWS</strong>. My work focuses on efficient systems, reliable APIs, and seamless user experiences.
+        </p>
+
+        <p>
+          Beyond coding, I lead technology initiatives and digital transformation projects, helping organizations transform innovative ideas into practical, impactful products that deliver real business value.
         </p>
       </div>
     </Section>

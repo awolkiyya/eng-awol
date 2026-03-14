@@ -17,6 +17,10 @@ export default function SkillsSection() {
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
     },
     {
+      name: "Express.js",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    },
+    {
       name: "AWS",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
     },
@@ -44,6 +48,11 @@ export default function SkillsSection() {
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
     },
     {
+      name: "Express.js",
+      level: 80,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    },
+    {
       name: "React.js",
       level: 80,
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -51,7 +60,7 @@ export default function SkillsSection() {
     {
       name: "Tailwind CSS",
       level: 85,
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
     },
     {
       name: "shadcn/ui",
@@ -87,6 +96,7 @@ export default function SkillsSection() {
         <h3 className="text-sm font-semibold text-gray-500 mb-4">
           Core Technologies
         </h3>
+
         <div className="flex flex-wrap gap-4">
           {coreSkills.map((skill) => (
             <div
@@ -100,17 +110,13 @@ export default function SkillsSection() {
         </div>
       </div>
 
-      {/* Skills with Progress Bars */}
+      {/* Skills with Progress */}
       <div className="w-full grid md:grid-cols-2 gap-6">
         {skills.map((skill) => (
           <div key={skill.name} className="space-y-2">
             <div className="flex items-center justify-between text-sm">
               <div className="flex items-center gap-2">
-                <img
-                  src={skill.icon}
-                  alt={skill.name}
-                  className="w-5 h-5"
-                />
+                <img src={skill.icon} alt={skill.name} className="w-5 h-5" />
                 <span className="font-medium">{skill.name}</span>
               </div>
               <span className="text-gray-400">{skill.level}%</span>
