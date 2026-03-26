@@ -48,7 +48,7 @@ export default function HeroSection() {
                 Software Engineer
             </p>
             <div className="mt-6">
-                <button className="group bg-indigo-600 hover:bg-indigo-700 text-white px-7 py-2.5 rounded-lg">
+                <button className="group bg-black hover:bg-black/70 text-white px-7 py-2.5 rounded-lg">
                     Resume
                     <ArrowRightIcon className="group-hover:translate-x-0.5 transition ml-1 size-5 inline-flex" />
                 </button>

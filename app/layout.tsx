@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import { Poppins, Sorts_Mill_Goudy } from "next/font/google";
+import { Poppins, Sorts_Mill_Goudy, Geist } from "next/font/google";
 import "./globals.css";
 import LenisScroll from "@/components/lenis";
+import { cn } from "@/lib/utils";
 
-const poppins = Poppins({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const sortsMillGoudy = Sorts_Mill_Goudy({
   variable: "--font-mono",
@@ -23,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${sortsMillGoudy.variable}`}>
+    <html lang="en" className={cn(sortsMillGoudy.variable, "font-sans", geist.variable)}>
       <body>
         <LenisScroll />
         {children}
