@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Sorts_Mill_Goudy, Geist } from "next/font/google";
+import {  Sorts_Mill_Goudy, Geist } from "next/font/google";
 import "./globals.css";
 import LenisScroll from "@/components/lenis";
 import { cn } from "@/lib/utils";
