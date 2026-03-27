@@ -33,6 +33,7 @@ const DataTablePaginationPreview = () => {
 
 type CodeSnippet = {
   title?: string;
+  description?: string;       // Optional explanation or details about this snippet
   code: string;
 };
 
@@ -49,145 +50,149 @@ type ComponentItem = {
   sections: ComponentSection[];
 };
 
+/* ================= COMPONENT DATA ================= */
 export const componentsList: ComponentItem[] = [
-  {
-    name: "DataTablePagination",
-    category: "UI",
-    sections: [
-      {
-        title: "Interactive Pagination",
-        instructions: `Steps:
-1. Import DataTablePagination
-2. Pass page, pageSize, total, onPageChange, onPageSizeChange
-3. Optionally customize pageSizeOptions`,
-        preview: <DataTablePaginationPreview />, // live preview
-        codeSnippets: [
-          {
-            title: "Basic Usage",
-            code: `<DataTablePagination
-  page={1}
-  pageSize={10}
-  total={123}
-  onPageChange={(page) => console.log(page)}
-  onPageSizeChange={(size) => console.log(size)}
-/>`
-          },
-          {
-            title: "Custom Page Sizes",
-            code: `'use client'
-
-import { Field, FieldLabel } from '@/components/ui/field'
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-import { cn } from '@/lib/utils'
-
-type DataTablePaginationProps = {
-  page: number
-  pageSize: number
-  total: number
-  onPageChange: (page: number) => void
-  onPageSizeChange: (size: number) => void
-  pageSizeOptions?: number[]
-  className?: string
-  disabled?: boolean
-}
-
-export function DataTablePagination({
-  page,
-  pageSize,
-  total,
-  onPageChange,
-  onPageSizeChange,
-  pageSizeOptions = [10, 25, 50, 100],
-  className,
-  disabled
-}: DataTablePaginationProps) {
-  const totalPages = Math.max(1, Math.ceil(total / pageSize))
-  const from = total === 0 ? 0 : (page - 1) * pageSize + 1
-  const to = Math.min(page * pageSize, total)
-  const canPrevious = page > 1
-  const canNext = page < totalPages
-  const isDisabled = disabled || total === 0
-
-  return (
-    <div className={cn('flex flex-col gap-3 border-t bg-background px-4 py-3 sm:flex-row sm:items-center sm:justify-between', className)}>
-      <p className="text-sm text-muted-foreground">
-        Showing <span className="font-medium text-foreground">{from}</span>–
-        <span className="font-medium text-foreground">{to}</span> of{' '}
-        <span className="font-medium text-foreground">{total}</span>
-      </p>
-
-      <div className="flex flex-wrap items-center gap-3">
-        <Field orientation="horizontal" className="w-fit gap-2">
-          <FieldLabel htmlFor="rows-per-page" className="text-xs text-muted-foreground">
-            Rows
-          </FieldLabel>
-          <Select value={String(pageSize)} onValueChange={v => onPageSizeChange(Number(v))}>
-            <SelectTrigger id="rows-per-page" className="h-8 w-[72px]">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent align="end">
-              <SelectGroup>
-                {pageSizeOptions.map(size => (
-                  <SelectItem key={size} value={String(size)}>{size}</SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </Field>
-
-        <Pagination className="mx-0 w-auto">
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                href="#"
-                aria-disabled={!canPrevious || isDisabled}
-                className={cn('h-8', (!canPrevious || isDisabled) && 'pointer-events-none opacity-50')}
-                onClick={e => { e.preventDefault(); if(canPrevious && !isDisabled) onPageChange(page-1) }}
-              />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext
-                href="#"
-                aria-disabled={!canNext || isDisabled}
-                className={cn('h-8', (!canNext || isDisabled) && 'pointer-events-none opacity-50')}
-                onClick={e => { e.preventDefault(); if(canNext && !isDisabled) onPageChange(page+1) }}
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </div>
-    </div>
-  )
-}`
-          },
-          {
-            title: "Disabled State",
-            code: `<DataTablePagination
-  page={1}
-  pageSize={10}
-  total={0}
-  disabled
-/>`
-          }
-        ]
-      }
-    ]
+    {
+      name: "DataTablePagination",
+      category: "UI",
+      sections: [
+        {
+          title: "Interactive Pagination",
+          instructions: `Steps:
+  1. Import DataTablePagination
+  2. Pass page, pageSize, total, onPageChange, onPageSizeChange
+  3. Optionally customize pageSizeOptions`,
+          preview: <DataTablePaginationPreview />, // live preview
+          codeSnippets: [
+            {
+              title: "Basic Usage",
+              code: `<DataTablePagination
+    page={1}
+    pageSize={10}
+    total={123}
+    onPageChange={(page) => console.log(page)}
+    onPageSizeChange={(size) => console.log(size)}
+  />`,
+              description: "The simplest usage showing a static total with default page size and handling page/pageSize changes."
+            },
+            {
+              title: "Custom Page Sizes",
+              code: `'use client'
+  
+  import { Field, FieldLabel } from '@/components/ui/field'
+  import {
+    Pagination,
+    PaginationContent,
+    PaginationItem,
+    PaginationNext,
+    PaginationPrevious,
+  } from '@/components/ui/pagination'
+  import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from '@/components/ui/select'
+  import { cn } from '@/lib/utils'
+  
+  type DataTablePaginationProps = {
+    page: number
+    pageSize: number
+    total: number
+    onPageChange: (page: number) => void
+    onPageSizeChange: (size: number) => void
+    pageSizeOptions?: number[]
+    className?: string
+    disabled?: boolean
   }
-];
+  
+  export function DataTablePagination({
+    page,
+    pageSize,
+    total,
+    onPageChange,
+    onPageSizeChange,
+    pageSizeOptions = [10, 25, 50, 100],
+    className,
+    disabled
+  }: DataTablePaginationProps) {
+    const totalPages = Math.max(1, Math.ceil(total / pageSize))
+    const from = total === 0 ? 0 : (page - 1) * pageSize + 1
+    const to = Math.min(page * pageSize, total)
+    const canPrevious = page > 1
+    const canNext = page < totalPages
+    const isDisabled = disabled || total === 0
+  
+    return (
+      <div className={cn('flex flex-col gap-3 border-t bg-background px-4 py-3 sm:flex-row sm:items-center sm:justify-between', className)}>
+        <p className="text-sm text-muted-foreground">
+          Showing <span className="font-medium text-foreground">{from}</span>–
+          <span className="font-medium text-foreground">{to}</span> of{' '}
+          <span className="font-medium text-foreground">{total}</span>
+        </p>
+  
+        <div className="flex flex-wrap items-center gap-3">
+          <Field orientation="horizontal" className="w-fit gap-2">
+            <FieldLabel htmlFor="rows-per-page" className="text-xs text-muted-foreground">
+              Rows
+            </FieldLabel>
+            <Select value={String(pageSize)} onValueChange={v => onPageSizeChange(Number(v))}>
+              <SelectTrigger id="rows-per-page" className="h-8 w-[72px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent align="end">
+                <SelectGroup>
+                  {pageSizeOptions.map(size => (
+                    <SelectItem key={size} value={String(size)}>{size}</SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </Field>
+  
+          <Pagination className="mx-0 w-auto">
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href="#"
+                  aria-disabled={!canPrevious || isDisabled}
+                  className={cn('h-8', (!canPrevious || isDisabled) && 'pointer-events-none opacity-50')}
+                  onClick={e => { e.preventDefault(); if(canPrevious && !isDisabled) onPageChange(page-1) }}
+                />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext
+                  href="#"
+                  aria-disabled={!canNext || isDisabled}
+                  className={cn('h-8', (!canNext || isDisabled) && 'pointer-events-none opacity-50')}
+                  onClick={e => { e.preventDefault(); if(canNext && !isDisabled) onPageChange(page+1) }}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      </div>
+    )
+  }`,
+              description: "Demonstrates a fully functional pagination component with selectable page sizes and proper next/previous controls."
+            },
+            {
+              title: "Disabled State",
+              code: `<DataTablePagination
+    page={1}
+    pageSize={10}
+    total={0}
+    disabled
+  />`,
+              description: "Shows the component when there is no data; pagination controls are disabled automatically."
+            }
+          ]
+        }
+      ]
+    }
+  ];
 
 /* ================= PAGE ================= */
 export default function ComponentsPage() {
@@ -312,32 +317,45 @@ export default function ComponentsPage() {
                     </TabsContent>
                   )}
 
-                  {section.codeSnippets && (
-                    <TabsContent value="code">
-                      {section.codeSnippets.map((snippet, idx) => (
-                        <Card key={idx} className="my-2 relative">
-                          {snippet.title && (
-                            <CardHeader>
-                              <CardTitle className="text-sm">{snippet.title}</CardTitle>
-                            </CardHeader>
-                          )}
-                          <CardContent>
-                            <SyntaxHighlighter language="tsx" style={oneDark} className="rounded">
-                              {snippet.code}
-                            </SyntaxHighlighter>
-                            <Button
-                              variant="secondary"
-                              size="sm"
-                              className="absolute top-2 right-2 flex items-center gap-1"
-                              onClick={() => copyToClipboard(snippet.code)}
-                            >
-                              <Copy size={14} /> {copied?"Copied":"Copy"} 
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </TabsContent>
-                  )}
+{section.codeSnippets && (
+  <TabsContent value="code">
+    {section.codeSnippets.map((snippet, idx) => (
+      <Card key={idx} className="my-2 relative">
+        {snippet.title && (
+          <CardHeader>
+            <CardTitle className="text-sm">{snippet.title}</CardTitle>
+          </CardHeader>
+        )}
+
+        <CardContent className="relative">
+          {/* Description */}
+          {snippet.description && (
+            <p className="text-xs text-muted-foreground mb-2">{snippet.description}</p>
+          )}
+
+          {/* Code */}
+          <SyntaxHighlighter
+            language="tsx"
+            style={oneDark}
+            className="rounded"
+          >
+            {snippet.code}
+          </SyntaxHighlighter>
+
+          {/* Copy Button */}
+          <Button
+            variant="secondary"
+            size="sm"
+            className="absolute top-2 right-2 flex items-center gap-1"
+            onClick={() => copyToClipboard(snippet.code)}
+          >
+            <Copy size={14} /> {copied ? "Copied" : "Copy"}
+          </Button>
+        </CardContent>
+      </Card>
+    ))}
+  </TabsContent>
+)}
 
                   {section.instructions && (
                     <TabsContent value="instructions">
