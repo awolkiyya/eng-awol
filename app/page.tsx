@@ -20,7 +20,7 @@ const NAV_LINKS = [
   { name: "Contact", href: "#contact" },
 
   // ✅ NEW: Components page link
-  { name: "Components", href: "/components" },
+  { name: "Components & Logic", href: "/components" },
 ];
 
 const LANGUAGES = [
