@@ -38,36 +38,35 @@ declare global {
   }
 }
 
-
-
 /* ================= REUSABLE ADSENSE COMPONENT ================= */
 
-function AdBanner() {
+function AdBanner({ adClient = "ca-pub-3940256099942544", adSlot = "1234567890" }) {
   const adRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!window.adsbygoogle) {
-      window.adsbygoogle = [];
-    }
+    if (!window.adsbygoogle) window.adsbygoogle = [];
 
-    // Only push if the element exists and is not yet processed
-    if (adRef.current) {
-      try {
-        // @ts-ignore
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.warn("AdSense push skipped:", e);
+    // Delay push to ensure DOM fully rendered
+    const timeout = setTimeout(() => {
+      if (adRef.current) {
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.warn("AdSense push skipped:", e);
+        }
       }
-    }
+    }, 300);
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
-    <div ref={adRef}>
+    <div ref={adRef} className="w-full flex justify-center">
       <ins
         className="adsbygoogle"
         style={{ display: "block", width: "100%", minHeight: 250 }}
-        data-ad-client="ca-pub-3940256099942544" // Test client
-        data-ad-slot="1234567890" // Test slot
+        data-ad-client={adClient}
+        data-ad-slot={adSlot}
         data-ad-format="auto"
         data-full-width-responsive="true"
       />
@@ -80,11 +79,13 @@ function AdBanner() {
 export default function Page() {
   useEffect(() => {
     // Inject AdSense script once
-    const script = document.createElement("script");
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    script.async = true;
-    script.setAttribute("data-ad-client", "ca-pub-3940256099942544"); // Test ID
-    document.head.appendChild(script);
+    if (!document.querySelector(`script[src*="adsbygoogle.js"]`)) {
+      const script = document.createElement("script");
+      script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+      script.async = true;
+      script.setAttribute("data-ad-client", "ca-pub-3940256099942544"); // Test ID
+      document.head.appendChild(script);
+    }
   }, []);
 
   return (
@@ -100,19 +101,15 @@ export default function Page() {
           <AboutSection />
         </section>
 
-        {/* ✅ Test AdSense Banner */}
-        <section className="flex justify-center my-12">
-          <AdBanner />
-        </section>
+        {/* ✅ Test Ad Banner */}
+        <AdBanner />
 
         <section id="projects">
           <ProjectsSection />
         </section>
 
-        {/* ✅ Another Test AdSense Banner */}
-        <section className="flex justify-center my-12">
-          <AdBanner />
-        </section>
+        {/* ✅ Another Test Ad Banner */}
+        <AdBanner />
 
         <section id="experience">
           <ExperienceSection />
