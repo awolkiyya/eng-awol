@@ -239,10 +239,33 @@ const categories = ["All", "Mobile", "Web"];
       ],
     },
     {
+      title: "Digital SaaS Restaurant",
+      description:
+        "A modern restaurant ordering and management system with dynamic menu browsing, cart functionality, and admin controls. Powered by Laravel API and built with a responsive UI using Next.js, Tailwind CSS, and shadcn/ui, with Redux managing global state for cart, orders, and UI interactions.",
+      image: "/assets/projects/restaurant.png",
+      category: "Web",
+      tech: [
+        "Next.js (TypeScript)",
+        "Laravel API",
+        "MySQL",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Redux Toolkit"
+      ],
+    },
+    {
       title: "AI Smart KYC Verification",
       description:
         "A mobile-based identity verification system enabling secure user onboarding with document upload, validation, and real-time status tracking using cloud services.",
       image: "/assets/projects/kyc.png",
+      category: "Mobile",
+      tech: ["Flutter", "Firebase Auth", "Cloud Firestore", "Cloud Storage"],
+    },
+    {
+      title: "Ghioon B2B,B2C,C2C with Real Time Chat",
+      description:
+        "A mobile-based identity verification system enabling secure user onboarding with document upload, validation, and real-time status tracking using cloud services.",
+      image: "/assets/projects/ghioon.png",
       category: "Mobile",
       tech: ["Flutter", "Firebase Auth", "Cloud Firestore", "Cloud Storage"],
     },
