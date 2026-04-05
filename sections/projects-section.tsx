@@ -1,135 +1,312 @@
+// "use client";
+
+// import { useState } from "react";
+// import Section from "@/components/section";
+// import Image from "next/image";
+
+// export default function ProjectsSection() {
+//   const categories = ["All", "Mobile", "Web"];
+
+//   const [activeCategory, setActiveCategory] = useState("All");
+
+//   const projects = [
+//     {
+//       title: "Ada Pay Wallet",
+//       description:
+//         "A mobile digital wallet and marketplace platform enabling users to manage payments, discover local businesses, and perform secure transactions. Integrated with Telebirr and Chapa payment gateways for local and online payments, with secure API handling, transaction processing, and optimized Flutter UI for a seamless financial experience.",
+//       image: "/assets/projects/adapay.png",
+//       category: "Mobile",
+//       tech: [
+//         "Flutter",
+//         "Laravel API",
+//         "MySQL",
+//         "REST API",
+//         "JWT Auth",
+//         "Telebirr API",
+//         "Chapa API"
+//       ],
+//     },
+//     {
+//       title: "Ada Tech Dashboard",
+//       description:
+//         "A B2B enterprise web platform designed for manufacturers, wholesalers, and retailers to manage products, orders, and analytics. Features role-based access control, modular dashboard architecture, and scalable cloud deployment. Built with a modern component-driven UI using shadcn/ui, Tailwind CSS, and Redux for state management.",
+//       image: "/assets/projects/ada-tech-dashbaord.png",
+//       category: "Web",
+//       tech: [
+//         "Next.js (TypeScript)",
+//         "Laravel API",
+//         "MySQL",
+//         "AWS",
+//         "Tailwind CSS",
+//         "shadcn/ui",
+//         "Redux Toolkit"
+//       ],
+//     },
+//     {
+//       title: "AIG Digital Restaurant",
+//       description:
+//         "A modern restaurant ordering and management system with dynamic menu browsing, cart functionality, and admin controls. Powered by Laravel API and built with a responsive UI using Next.js, Tailwind CSS, and shadcn/ui, with Redux managing global state for cart, orders, and UI interactions.",
+//       image: "/assets/projects/aigcafe.png",
+//       category: "Web",
+//       tech: [
+//         "Next.js (TypeScript)",
+//         "Laravel API",
+//         "MySQL",
+//         "Tailwind CSS",
+//         "shadcn/ui",
+//         "Redux Toolkit"
+//       ],
+//     },
+//     {
+//       title: "AI Smart KYC Verification",
+//       description:
+//         "A mobile-based identity verification system enabling secure user onboarding with document upload, validation, and real-time status tracking using cloud services.",
+//       image: "/assets/projects/kyc.png",
+//       category: "Mobile",
+//       tech: ["Flutter", "Firebase Auth", "Cloud Firestore", "Cloud Storage"],
+//     },
+//     {
+//       title: "Ada Go",
+//       description:
+//         "A mobile business management and logistics application featuring real-time location tracking, route handling, and operational workflow management. Integrated Mapbox and Google Maps APIs for geolocation, routing, and real-time tracking. Built using scalable Laravel APIs with advanced state management (Riverpod and GetX) to ensure high performance, maintainability, and responsive UI.",
+//       image: "/assets/projects/adago.png",
+//       category: "Mobile",
+//       tech: [
+//         "Flutter",
+//         "Laravel API",
+//         "MySQL",
+//         "REST API",
+//         "Mapbox",
+//         "Google Maps API",
+//         "Riverpod",
+//         "GetX"
+//       ],
+//     }
+//   ];
+  
+
+//   const filteredProjects =
+//     activeCategory === "All"
+//       ? projects
+//       : projects.filter((p) => p.category === activeCategory);
+
+//   return (
+//     <Section title="Projects">
+
+//       {/* Category Filter */}
+//       <div className="flex justify-center md:justify-start  mb-10">
+//         <div className="flex gap-2 bg-gray-100 p-1 rounded-lg">
+//           {categories.map((cat) => (
+//             <button
+//               key={cat}
+//               onClick={() => setActiveCategory(cat)}
+//               className={`px-4 py-1.5 text-sm rounded-md transition
+//                 ${
+//                   activeCategory === cat
+//                     ? "bg-white shadow text-black"
+//                     : "text-gray-500 hover:text-black"
+//                 }`}
+//             >
+//               {cat}
+//             </button>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* Projects Grid */}
+//       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+//         {filteredProjects.map((project) => (
+//           <div
+//             key={project.title}
+//             className="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-xl transition duration-300"
+//           >
+
+//             {/* Project Image */}
+//             <div className="relative overflow-hidden">
+//               <Image
+//                 src={project.image}
+//                 alt={project.title}
+//                 width={500}
+//                 height={300}
+//                 className="w-full h-[200px] object-cover group-hover:scale-105 transition duration-300"
+//               />
+//             </div>
+
+//             {/* Content */}
+//             <div className="p-5 flex flex-col gap-4">
+
+//               <div>
+//                 <h3 className="text-lg font-semibold">
+//                   {project.title}
+//                 </h3>
+
+//                 <p className="text-gray-500 text-sm mt-1">
+//                   {project.description}
+//                 </p>
+//               </div>
+
+//               {/* Tech Stack */}
+//               <div className="flex flex-wrap gap-2">
+//                 {project.tech.map((tech) => (
+//                   <span
+//                     key={tech}
+//                     className="text-xs px-2 py-1 bg-gray-100 rounded-md"
+//                   >
+//                     {tech}
+//                   </span>
+//                 ))}
+//               </div>
+
+//               {/* Buttons */}
+//               <div className="flex gap-3 pt-2">
+//                 <button className="text-sm font-medium text-blue-600 hover:underline">
+//                   Live Demo
+//                 </button>
+
+//                 <button className="text-sm font-medium text-gray-600 hover:underline">
+//                   GitHub
+//                 </button>
+//               </div>
+
+//             </div>
+
+//           </div>
+//         ))}
+
+//       </div>
+
+//     </Section>
+//   );
+// }
+
+
 "use client";
 
-import { useState } from "react";
-import Section from "@/components/section";
+import { useMemo, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import Section from "@/components/section";
 
-export default function ProjectsSection() {
-  const categories = ["All", "Mobile", "Web"];
-
-  const [activeCategory, setActiveCategory] = useState("All");
+const categories = ["All", "Mobile", "Web"];
 
   const projects = [
     {
-      title: "Ada Market",
-      description: "Marketplace mobile app connecting local businesses with customers.",
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop",
+      title: "Ada Pay Wallet",
+      description:
+        "A mobile digital wallet and marketplace platform enabling users to manage payments, discover local businesses, and perform secure transactions. Integrated with Telebirr and Chapa payment gateways for local and online payments, with secure API handling, transaction processing, and optimized Flutter UI for a seamless financial experience.",
+      image: "/assets/projects/adapay.png",
       category: "Mobile",
-      tech: ["Flutter", "Laravel", "MySQL"],
+      tech: [
+        "Flutter",
+        "Laravel API",
+        "MySQL",
+        "REST API",
+        "JWT Auth",
+        "Telebirr API",
+        "Chapa API"
+      ],
     },
     {
-      title: "Ghioon B2B Platform",
-      description: "B2B platform enabling manufacturers and retailers to trade online.",
-      image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop",
+      title: "Ada Tech Dashboard",
+      description:
+        "A B2B enterprise web platform designed for manufacturers, wholesalers, and retailers to manage products, orders, and analytics. Features role-based access control, modular dashboard architecture, and scalable cloud deployment. Built with a modern component-driven UI using shadcn/ui, Tailwind CSS, and Redux for state management.",
+      image: "/assets/projects/ada-tech-dashbaord.png",
       category: "Web",
-      tech: ["Next.js", "Laravel", "MySQL", "AWS"],
+      tech: [
+        "Next.js (TypeScript)",
+        "Laravel API",
+        "MySQL",
+        "AWS",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Redux Toolkit"
+      ],
     },
     {
-      title: "Smart City Dashboard",
-      description: "Admin dashboard for monitoring smart city services and analytics.",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+      title: "AIG Digital Restaurant",
+      description:
+        "A modern restaurant ordering and management system with dynamic menu browsing, cart functionality, and admin controls. Powered by Laravel API and built with a responsive UI using Next.js, Tailwind CSS, and shadcn/ui, with Redux managing global state for cart, orders, and UI interactions.",
+      image: "/assets/projects/aigcafe.png",
       category: "Web",
-      tech: ["Next.js", "Tailwind", "Node.js"],
+      tech: [
+        "Next.js (TypeScript)",
+        "Laravel API",
+        "MySQL",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Redux Toolkit"
+      ],
     },
     {
-      title: "Ada Eats",
-      description: "Food delivery mobile application with real-time tracking.",
-      image:
-        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop",
+      title: "AI Smart KYC Verification",
+      description:
+        "A mobile-based identity verification system enabling secure user onboarding with document upload, validation, and real-time status tracking using cloud services.",
+      image: "/assets/projects/kyc.png",
       category: "Mobile",
-      tech: ["Flutter", "Firebase"],
+      tech: ["Flutter", "Firebase Auth", "Cloud Firestore", "Cloud Storage"],
     },
     {
-      title: "Business Management Portal",
-      description: "Platform for managing business operations, sales, and reporting.",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
-      category: "Web",
-      tech: ["Next.js", "Laravel", "MySQL"],
-    },
-    {
-      title: "City Investment Platform",
-      description: "Web platform for managing investors and city development projects.",
-      image:
-        "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop",
-      category: "Web",
-      tech: ["Next.js", "Node.js", "MongoDB"],
-    },
-    {
-      title: "Healthcare Appointment App",
-      description: "Mobile app for booking doctor appointments and health reminders.",
-      image:
-        "https://images.unsplash.com/photo-1580281657527-47c8f3b0f44b?q=80&w=1200&auto=format&fit=crop",
+      title: "Ada Go",
+      description:
+        "A mobile business management and logistics application featuring real-time location tracking, route handling, and operational workflow management. Integrated Mapbox and Google Maps APIs for geolocation, routing, and real-time tracking. Built using scalable Laravel APIs with advanced state management (Riverpod and GetX) to ensure high performance, maintainability, and responsive UI.",
+      image: "/assets/projects/adago.png",
       category: "Mobile",
-      tech: ["Flutter", "Firebase", "Node.js"],
-    },
-    {
-      title: "E-Learning Platform",
-      description: "Online learning system with courses, quizzes, and analytics.",
-      image:
-        "https://images.unsplash.com/photo-1584697964190-7383c36d74f4?q=80&w=1200&auto=format&fit=crop",
-      category: "Web",
-      tech: ["Next.js", "Express.js", "MongoDB"],
-    },
-    {
-      title: "Logistics Tracking System",
-      description: "System for tracking shipments and delivery operations.",
-      image:
-        "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
-      category: "Web",
-      tech: ["Laravel", "MySQL", "AWS"],
-    },
-    {
-      title: "Digital Wallet",
-      description: "Secure mobile wallet for managing digital payments.",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1200&auto=format&fit=crop",
-      category: "Mobile",
-      tech: ["Flutter", "Node.js", "MongoDB"],
-    },
-    {
-      title: "Real Estate Listing Platform",
-      description: "Property marketplace for buying, renting, and listing real estate.",
-      image:
-        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200&auto=format&fit=crop",
-      category: "Web",
-      tech: ["Next.js", "Tailwind", "Laravel"],
-    },
-    {
-      title: "Event Management App",
-      description: "Mobile app for managing events, tickets, and registrations.",
-      image:
-        "https://images.unsplash.com/photo-1503428593586-e225b39bddfe?q=80&w=1200&auto=format&fit=crop",
-      category: "Mobile",
-      tech: ["Flutter", "Firebase"],
-    },
+      tech: [
+        "Flutter",
+        "Laravel API",
+        "MySQL",
+        "REST API",
+        "Mapbox",
+        "Google Maps API",
+        "Riverpod",
+        "GetX"
+      ],
+    }
   ];
-  
 
-  const filteredProjects =
-    activeCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+const INITIAL_COUNT = 3;
+
+export default function ProjectsSection() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "All") return projects;
+    return projects.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
+
+  const visibleProjects = filteredProjects.slice(0, visibleCount);
+
+  const handleSeeMore = () => {
+    setVisibleCount((prev) => prev + 3);
+  };
+
+  const toggleExpand = (title: string) => {
+    setExpanded((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }));
+  };
 
   return (
     <Section title="Projects">
-
-      {/* Category Filter */}
-      <div className="flex justify-center md:justify-start  mb-10">
-        <div className="flex gap-2 bg-gray-100 p-1 rounded-lg">
+      {/* Filter */}
+      <div className="flex justify-center md:justify-start mb-10">
+        <div className="flex gap-2 bg-gray-100/70 backdrop-blur p-1 rounded-xl">
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1.5 text-sm rounded-md transition
-                ${
-                  activeCategory === cat
-                    ? "bg-white shadow text-black"
-                    : "text-gray-500 hover:text-black"
-                }`}
+              onClick={() => {
+                setActiveCategory(cat);
+                setVisibleCount(INITIAL_COUNT);
+              }}
+              className={`px-4 py-1.5 text-sm rounded-lg transition-all duration-200 ${
+                activeCategory === cat
+                  ? "bg-white shadow-sm text-black"
+                  : "text-gray-500 hover:text-black"
+              }`}
             >
               {cat}
             </button>
@@ -137,69 +314,96 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      {/* Projects Grid */}
+      {/* Grid */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {visibleProjects.map((project, i) => {
+          const isExpanded = expanded[project.title];
 
-        {filteredProjects.map((project) => (
-          <div
-            key={project.title}
-            className="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-xl transition duration-300"
-          >
+          return (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05 }}
+              className="group relative border border-gray-200/60 rounded-2xl overflow-hidden bg-white/80 backdrop-blur hover:shadow-2xl transition-all duration-300"
+            >
+              {/* Image */}
+              <div className="relative h-[200px] overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  priority={i < 2}
+                />
 
-            {/* Project Image */}
-            <div className="relative overflow-hidden">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={500}
-                height={300}
-                className="w-full h-[200px] object-cover group-hover:scale-105 transition duration-300"
-              />
-            </div>
-
-            {/* Content */}
-            <div className="p-5 flex flex-col gap-4">
-
-              <div>
-                <h3 className="text-lg font-semibold">
-                  {project.title}
-                </h3>
-
-                <p className="text-gray-500 text-sm mt-1">
-                  {project.description}
-                </p>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
               </div>
 
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs px-2 py-1 bg-gray-100 rounded-md"
+              {/* Content */}
+              <div className="p-5 flex flex-col gap-4">
+                <div>
+                  <h3 className="text-lg font-semibold tracking-tight">
+                    {project.title}
+                  </h3>
+
+                  <p
+                    className={`text-gray-500 text-sm mt-1 transition-all duration-300 ${
+                      isExpanded ? "" : "line-clamp-3"
+                    }`}
                   >
-                    {tech}
-                  </span>
-                ))}
+                    {project.description}
+                  </p>
+
+                  {/* See More Text */}
+                  <button
+                    onClick={() => toggleExpand(project.title)}
+                    className="text-xs text-blue-600 mt-1 hover:underline"
+                  >
+                    {isExpanded ? "See Less" : "See More"}
+                  </button>
+                </div>
+
+                {/* Tech */}
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-[11px] px-2 py-1 bg-gray-100/80 rounded-md border border-gray-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Actions */}
+                <div className="flex gap-4 pt-2">
+                  <button className="text-sm font-medium text-blue-600 hover:underline">
+                    Live Demo
+                  </button>
+                  <button className="text-sm font-medium text-gray-600 hover:underline">
+                    GitHub
+                  </button>
+                </div>
               </div>
-
-              {/* Buttons */}
-              <div className="flex gap-3 pt-2">
-                <button className="text-sm font-medium text-blue-600 hover:underline">
-                  Live Demo
-                </button>
-
-                <button className="text-sm font-medium text-gray-600 hover:underline">
-                  GitHub
-                </button>
-              </div>
-
-            </div>
-
-          </div>
-        ))}
-
+            </motion.div>
+          );
+        })}
       </div>
 
+      {/* See More Cards */}
+      {visibleCount < filteredProjects.length && (
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={handleSeeMore}
+            className="px-6 py-2 rounded-xl bg-black text-white text-sm font-medium hover:bg-gray-800 transition-all"
+          >
+            See More Projects
+          </button>
+        </div>
+      )}
     </Section>
   );
 }
+
