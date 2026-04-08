@@ -10,7 +10,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Menu, ChevronDown, ChevronRight, LucideSearch, Copy } from "lucide-react";
 import { Transition } from "@headlessui/react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { materialLight, oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { componentsList } from "@/data/components";
@@ -276,7 +276,7 @@ export default function ComponentsPage() {
                     {section.codeSnippets?.map((snip, idx) => (
                       <div key={idx} className="relative">
                         {snip.title && <p className="text-sm font-medium mb-1">{snip.title}</p>}
-                        <SyntaxHighlighter style={oneDark}>{snip.code}</SyntaxHighlighter>
+                        <SyntaxHighlighter style={materialLight}>{snip.code}</SyntaxHighlighter>
                         <Button
                           size="sm"
                           className="absolute top-2 right-2"
